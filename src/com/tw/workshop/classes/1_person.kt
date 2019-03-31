@@ -1,4 +1,4 @@
-package com.tw.workshop.clases
+package com.tw.workshop.classes
 
 class Person(nameParam: String, ageParam: Int) {
     var name: String = nameParam
