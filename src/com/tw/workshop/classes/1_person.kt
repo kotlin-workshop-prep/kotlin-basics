@@ -1,5 +1,13 @@
 package com.tw.workshop.classes
 
+data class User(var name: String){
+    var password: String = ""
+
+    override fun equals(other: Any?): Boolean {
+        return other is User && name == other.name && password == other.password
+    }
+}
+
 class Person(nameParam: String, ageParam: Int) {
     var name: String = nameParam
         set(value) {
@@ -25,6 +33,7 @@ class Person(nameParam: String, ageParam: Int) {
     * We can choose getter and setter to be private
     * We can make the properties `private` but then we cannot use getters and setters around them, however we can have other behaviours for them
     * We can override a function by putting keyword override before that
+    * We can create data classes which will have equals,hashcode, toString
 * */
 fun main(args: Array<String>) {
     val person = Person("Ryan", 12)
@@ -32,4 +41,13 @@ fun main(args: Array<String>) {
     println(person.name)
     println(person.isAdult())
     println(person)
+
+    println("*******************************")
+    val user1 = User("bob")
+    println(user1)
+    user1.password = "xyz"
+    val user2 = User("bob")
+    user2.password = "abc"
+
+    println(user1 == user2)
 }
