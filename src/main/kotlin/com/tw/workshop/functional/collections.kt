@@ -31,10 +31,20 @@ fun main(args: Array<String>) {
     println(first5EmpsWithHighestSalariesInOrder(employees))
 }
 
-private fun departmentWiseTotalSalary(employees: List<Employee>): Map<String, Int?> {
-    return employees.groupingBy { it.department }.aggregate { _, accumulator: Int?, element, first ->
-        if (first) element.salary else element.salary + accumulator!!
-    }
+
+//Work with list of employees
+//1. Output their salaries
+//2. Sum their salaries
+//3. Sum of salaries of employees in department Accounts
+//4.
+
+
+// Department-wise total salary
+
+
+private fun departmentWiseTotalSalary(employees: List<Employee>): List<Pair<String, Int>> {
+    return employees.groupBy { it.department }.map { Pair(it.key, it.value.map { x -> x.salary }.sum()) };
+
 }
 
 private fun first5EmpsWithHighestSalariesSorted(employees: List<Employee>): List<Employee> {

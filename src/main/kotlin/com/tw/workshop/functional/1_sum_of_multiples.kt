@@ -11,3 +11,11 @@ fun sumOfMultiplesOf(multiplesOf: Array<Int>, n: Int): Int {
 fun main(args: Array<String>) {
     println(sumOfMultiplesOf(arrayOf(3, 5), 1000))
 }
+
+fun foo(n: Int): Int {
+    return (1..Int.MAX_VALUE).filter { it % 3 == 0 || it % 5 == 0 }.takeWhile { it < 1000 }.sum()
+}
+
+
+//
+
