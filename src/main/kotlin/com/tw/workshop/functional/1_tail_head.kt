@@ -45,10 +45,31 @@ fun <T, R> List<T>.myreduce(acc: R, mapper: (acc: R, elem: T) -> R): R {
 
 fun main(args: Array<String>) {
     val numbers = arrayListOf(1, 2, 3, 5)
-    println(numbers.lenRecursive())
-    println(numbers.lenReduce())
+//    println(numbers.lenRecursive())
+//    println(numbers.lenReduce())
 
     val names = arrayListOf("Alice", "Bob", "carol")
+
+    println(names.reduce { acc, s -> "$acc$s" }
+        .toLowerCase()
+        .toCharArray()
+        .groupBy { it }
+        .map { (charKey, charList) -> Pair(charKey, charList.size) }
+    )
+
+//    println(names.groupBy { it.length }.map { (size, names) -> Pair(size, names.size) })
+
+//    println(
+//        names.filter(fun(it: String): Boolean {
+//            println("In filter $it")
+//            return it.length > 3
+//        })
+//            .map { println("In map $it");it.length }
+//            .reduce { l1, l2 -> l1 + l2 }
+//    )
+
+    println(names.reduce { acc, s -> "$acc $s" })
+
     println(names.lenReduce())
     println(names.lenRecursive())
     println(emptyList<Int>().lenReduce())
