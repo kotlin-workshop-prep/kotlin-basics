@@ -7,28 +7,28 @@ package com.tw.workshop.functional
 *
 * */
 
-data class Employee(
+data class OldEmployee(
     val name: String,
     val salary: Int,
     val department: String
 )
 
 fun main(args: Array<String>) {
-    val alice = Employee("Alice", 45000, "Accounts")
-    val bob = Employee("Bob", 760000, "Finance")
-    val carol = Employee("Carol", 45000, "HR")
-    val dan = Employee("Dan", 56000, "IT")
-    val erin = Employee("Erin", 156000, "Finance")
-    val frank = Employee("Frank", 66000, "Accounts")
-    val grace = Employee("Grace", 36000, "IT")
-    val ivan = Employee("Ivan", 48000, "HR")
+    val alice = OldEmployee("Alice", 45000, "Accounts")
+    val bob = OldEmployee("Bob", 760000, "Finance")
+    val carol = OldEmployee("Carol", 45000, "HR")
+    val dan = OldEmployee("Dan", 56000, "IT")
+    val erin = OldEmployee("Erin", 156000, "Finance")
+    val frank = OldEmployee("Frank", 66000, "Accounts")
+    val grace = OldEmployee("Grace", 36000, "IT")
+    val ivan = OldEmployee("Ivan", 48000, "HR")
 
-    val employees: List<Employee> = arrayListOf(grace, ivan, alice, frank, bob, carol, dan, erin)
+    val oldEmployees: List<OldEmployee> = arrayListOf(grace, ivan, alice, frank, bob, carol, dan, erin)
 
-    println(departmentWiseTotalSalary(employees))
+    println(departmentWiseTotalSalary(oldEmployees))
 
-    println(first5EmpsWithHighestSalariesSorted(employees))
-    println(first5EmpsWithHighestSalariesInOrder(employees))
+    println(first5EmpsWithHighestSalariesSorted(oldEmployees))
+    println(first5EmpsWithHighestSalariesInOrder(oldEmployees))
 }
 
 
@@ -42,20 +42,20 @@ fun main(args: Array<String>) {
 // Department-wise total salary
 
 
-private fun departmentWiseTotalSalary(employees: List<Employee>): List<Pair<String, Int>> {
-    return employees.groupBy { it.department }.map { Pair(it.key, it.value.map { x -> x.salary }.sum()) };
+private fun departmentWiseTotalSalary(oldEmployees: List<OldEmployee>): List<Pair<String, Int>> {
+    return oldEmployees.groupBy { it.department }.map { Pair(it.key, it.value.map { x -> x.salary }.sum()) };
 
 }
 
-private fun first5EmpsWithHighestSalariesSorted(employees: List<Employee>): List<Employee> {
-    return employees.filter { it.salary > 50000 }
+private fun first5EmpsWithHighestSalariesSorted(oldEmployees: List<OldEmployee>): List<OldEmployee> {
+    return oldEmployees.filter { it.salary > 50000 }
         .sortedBy { it.salary }
         .take(5)
         .sortedWith(compareBy { it.name })
 }
 
-private fun first5EmpsWithHighestSalariesInOrder(employees: List<Employee>): List<Employee> {
-    return employees.filter { it.salary > 50000 }
+private fun first5EmpsWithHighestSalariesInOrder(oldEmployees: List<OldEmployee>): List<OldEmployee> {
+    return oldEmployees.filter { it.salary > 50000 }
         .withIndex()
         .sortedBy { (_, e) -> e.salary }
         .take(5)
